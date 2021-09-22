@@ -84,7 +84,7 @@ form {
   
 .circulo-2 {
     position: absolute;
-    top: 27px;
+    top: 0.45em;
     transform: translateX(70%);
     width: 28px;
     height: 22px;
@@ -138,6 +138,10 @@ form {
         margin-left: 2.5vw;
         grid-area: "tema";
         // align-self:stretch;
+    }
+
+    .circulo-2 {
+        top: 1.7rem;
     }
     
 }

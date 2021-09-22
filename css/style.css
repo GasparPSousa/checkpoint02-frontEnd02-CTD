@@ -123,7 +123,7 @@ form input {
 
 .circulo-2 {
   position: absolute;
-  top: 27px;
+  top: 0.45em;
   -webkit-transform: translateX(70%);
           transform: translateX(70%);
   width: 28px;
@@ -216,6 +216,9 @@ footer {
   .tema {
     margin-left: 2.5vw;
     grid-area: "tema";
+  }
+  .circulo-2 {
+    top: 1.7rem;
   }
 }
 /*# sourceMappingURL=style.css.map */
