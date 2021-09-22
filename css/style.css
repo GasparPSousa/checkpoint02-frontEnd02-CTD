@@ -62,6 +62,15 @@ main section {
   border: 1px solid black;
 }
 
+details {
+  text-align: center;
+}
+
+details summary {
+  padding: 10px;
+  font-size: 22px;
+}
+
 form {
   border: 1px solid black;
   display: -webkit-box;
@@ -74,6 +83,7 @@ form {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  margin-bottom: 15px;
   padding: 5px;
 }
 

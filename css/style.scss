@@ -37,11 +37,22 @@ main {
     }
 }
 
+details {
+    text-align: center;
+    summary {
+        padding: 10px;
+        font-size: 22px;
+        // list-style:disc;
+    }
+}
+
+
 form {
     border: 1px solid black;
     display: flex;
     justify-content: center;
     flex-direction: column;
+    margin-bottom: 15px;
     padding: 5px;
 
     input {
