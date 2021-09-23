@@ -6,7 +6,7 @@ function carregandoJanela() {
 
     setTimeout(() => {
         loading.style.display = 'none';
-    }, 500);
+    }, 3000);
 }
 
 let sectionTarefas = document.getElementById('secao-tarefas');

@@ -28,63 +28,64 @@ iconsChecked.forEach(el => el.addEventListener('click', (e) => {
     // let idTarefa = parseInt(el.id);
     // let indexTarefa = indexTarefas.indexOf(idTarefa);
     let divInput = el.parentElement;
-    let paragrafo = divInput.parentElement.children[1].children[0];
+    let paragrafo = divInput.parentElement.children[2].children[0];
     paragrafo.classList.toggle('tachado');
 }))
 
-// var cores = ["#003366", "#336699", "#006666", "#66FF99", "#99FFCC", "#CCFFFF", "#CCCCFF"];
-// var visualizar = document.getElementById('visualizar');
-// var escolhas = document.getElementById('escolhas');
-// cores.forEach(function (cor) {
-//     var button = document.createElement('button');
-//     button.value = cor;
-//     button.type = 'button';
-//     button.style.backgroundColor = cor;
-//     button.addEventListener('click', handler(button));
-//     escolhas.appendChild(button);
-// });
+var cores = ["#003366", "#336699", "#006666", "#66FF99", "#CCFFFF", "#CCCCFF"];
 
-// function criarPaleta() {
-//     let paletaCores = document.createElement('div');
-//     paletaCores.setAttribute('class', 'escolhas-none');
+function aplicarBackground(el, article) {
+    return function () {
+        article.style.backgroundColor = el.value;
+    }
+}
 
-//     cores.forEach(function (cor) {
-//         var button = document.createElement('button');
-//         button.value = cor;
-//         button.type = 'button';
-//         button.style.backgroundColor = cor;
-//         button.addEventListener('click', handler(button));
-//         paletaCores.appendChild(button);
-//     });
-//     return paletaCores;
-// }
+function criarPaleta(artigo) {
+    let divPaleta = document.createElement('div');
+    divPaleta.setAttribute('class', 'child-paleta');
+    cores.forEach(function (cor) {
+        var button = document.createElement('button');
+        button.setAttribute('class', 'btn-cor');
+        button.value = cor;
+        button.type = 'button';
+        button.style.backgroundColor = cor;
+        button.addEventListener('click', aplicarBackground(button, artigo));
+        divPaleta.appendChild(button);
+    });
+    return divPaleta;
+}
 
-// function handler(el) {
-//     return function () {
-//         visualizar.style.backgroundColor = el.value;
-//     }
-// }
+let iconsColor = document.querySelectorAll('[data-click-color]');
+iconsColor.forEach(el => el.addEventListener('mouseover', (e) => {
+    e.preventDefault();
+    let divInput = el.parentElement;
+    let article = divInput.parentElement;
+    let paletaCores = article.children[1];
+    paletaCores.appendChild(criarPaleta(article))
+    // paletaCores.classList.remove('escolhas-none');
+    // paletaCores.classList.add('escolhas-flex');
+    
+}))
 
-// let iconsColor = document.querySelectorAll('[data-click-color]');
-// iconsColor.forEach(el => el.addEventListener('click', (e) => {
+let caixasPaletas = document.querySelectorAll('.btn-cor');
+caixasPaletas.forEach(el => el.addEventListener('click', (e) => {
+    e.preventDefault();
+    let divInput = el.parentElement;
+    let article = divInput.parentElement;
+    let paletaCores = article.children[1];
+    paletaCores.removeChild(paletaCores.firstChild)
+    paletaCores.classList.remove('escolhas-flex');
+    paletaCores.classList.add('escolhas-none');
+}))
+
+
+// caixasPaletas.forEach(el => el.addEventListener('mouseout', (e) => {
 //     e.preventDefault();
-//     let divInput = el.parentElement;
-//     let article = divInput.parentElement;
-//     // let paletaCores = el.parentElement.children[0];
-//     console.log(criarPaleta)
-//     // article.appendChild(paleta);
-//     paletaCores.classList.toggle('escolhas-none');
-//     paletaCores.classList.toggle('escolhas-flex');
-
+//     console.log(el);
+//     el.classList.remove('escolhas-none');
+//     el.classList.add('escolhas-flex');
 // }))
 
-// iconsColor.forEach(el => el.addEventListener('mouseout', (e) => {
-//     e.preventDefault();
-//     let divInput = el.parentElement;
-//     let article = divInput.parentElement;
-//     let paletaCores = el.parentElement.children[0];
-//     paletaCores.removeChild();
-// }))
 
 let iconsLixeira = document.querySelectorAll('[data-click-lixeira]');
 iconsLixeira.forEach(el => el.addEventListener('click', (e) => {
@@ -125,11 +126,11 @@ function criarTarefa(dataCriacao, dataLimite, descricao, id) {
     artigo.innerHTML =
         `
     <div class="section__box-icons">
-        <div id="escolhas" class="escolhas-none"></div>
-        <input data-click-checked id="${id}" type="image" src="./midias/check.png" alt="checked">
-        <input data-click-color id="${id}" type="image" src="./midias/color-palette.png" alt="cor">
-        <input data-click-lixeira id="${id}" type="image" src="./midias/bin.png" alt="lixeira">
+    <input data-click-checked id="${id}" type="image" src="./midias/check.png" alt="checked">
+    <input data-click-color id="${id}" type="image" src="./midias/color-palette.png" alt="cor">
+    <input data-click-lixeira id="${id}" type="image" src="./midias/bin.png" alt="lixeira">
     </div>
+    <div class="escolhas-flex paleta"></div>
     <div class="section__box-paragrafo">
          <p>${descricao}</p>
     </div>
