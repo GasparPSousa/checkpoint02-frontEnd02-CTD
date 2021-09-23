@@ -32,16 +32,15 @@ main {
 
     section {
         display: flex;
-        justify-content: flex-start;
+        justify-content: center;
         flex-flow: row wrap;
         width: 95vw;
-        height: 75vh;
         border: 1px solid black;
         
         article {
-            border: 1px solid black;
+            border: 1px dotted black;
             display: grid;
-            grid-template-rows: 0.5fr 2fr 0.5fr;
+            grid-template-rows: 0.5fr 1fr 0.5fr;
             grid-template-columns: 1fr;
             grid-area: "icons"
                         "descricao"
@@ -49,47 +48,29 @@ main {
             border-radius: 7px;
             margin: 10px;
             padding: 5px;
-            width: 180px;
-            height: 170px;
+            width: 185px;
+            height: 180px;
             justify-content: flex-start;
             flex-flow: row wrap;
+            background-image: url('../midias/note.jpg');
+            background-position: center;
+            background-size: cover;
+
+            p {
+                color: #000;
+            }
+            
+            &:hover {
+                transform: scale(1.03);
+                transition: .3s cubic-bezier(0.075, 0.82, 0.165, 1);
+            }
 
             .tachado {
                 text-decoration: line-through;
             }
-
-            input {
-                width: 32px;
-                height: 32px;
-                padding: 5px;
-            }
         }
     }
 }
-
-.escolhas-none{
-    display: none;
-}
-
-.escolhas-flex {
-    display: flex;
-    width: 30px;
-    height: 20px;
-    justify-content: center;
-    // z-index: ;
-
-    button {
-        padding: 10px;
-        border: 1px solid white;
-
-    }
-        &::hover {
-            cursor: pointer;
-            border: 1px solid black;
-        }
-        border: 1px solid black;
-}
-
 
 .section__box-icons {
     grid-area: "icons";
@@ -111,52 +92,15 @@ main {
     flex-flow: column wrap;
 
     p {
+        align-self:center;
+        margin-top: 7px;
         font-size: 12px;
-    }
-}
-
-details {
-    text-align: center;
-    summary {
-        padding: 10px;
-        font-size: 22px;
-        // list-style:disc;
+        color: #000;
     }
 }
 
 
-form {
-    border: 1px solid black;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin-bottom: 15px;
-    padding: 5px;
-    border-radius: 10px;
-    
-    input {
-        padding: 10px;
-        margin: 5px;
-        border-radius: 5px;
-        border: none;
-        &:focus {
-            outline: none;
-        }
-    }
 
-    button {
-        height: 40px;
-        border-radius: 10px;
-        margin: 7px;
-        font-weight: bold;
-
-        &:hover {
-            cursor: pointer;
-            transform: scale(1.05);
-            transition: .3s ease-in-out;
-        }
-    }
-}
 
 .tema {
     display: flex;
@@ -166,7 +110,6 @@ form {
     width: 60px;
     height: 35px;
     background-color: rgb(44, 6, 80);
-    // margin: 0 auto;
     border-radius: 50rem;
     margin-left: 20px;
 }

@@ -15,7 +15,7 @@
 <body>
     <header>
         <nav class="header__navegacao">
-            <a href="#">Tarefas API</a>
+            <a href="api.html">Tarefas API</a>
             <a href="#">Equipe</a>
         </nav>
         <div class="tema">
@@ -26,21 +26,40 @@
     <main class="container">
         <details>
             <summary>Criar Tarefa</summary>
-            <form action="">
-                <input type="date" id="date" placeholder="Data limite">
-                <input type="text" id="descricao" placeholder="Descrição da tarefa">
+            <form action="" id="formulario">
+                <input placeholder="Data limite" type="text" onfocus="(this.type = 'date')" onblur="(this.type = 'text')" id="date" name="dataLimite">
+                <input  name="descricao" type="text" id="descricao" placeholder="Descrição da tarefa">
+                <button id="btn-salvar">Salvar</button>
             </form>
         </details>
 
-        <section class="container__section">
-            <div class="container__section__box-img">
-                <img src="" alt="">
-            </div>
+        <section id="secao-tarefas" class="container__section">
+            <!-- imagem de fundo opcional -->
+            <!-- <div class="container__section__box-img">
+                <img src="" alt="Suas tarefas aqui.">
+            </div> -->
+            <article id="visualizar">
+                <div class="section__box-icons">
+                    <div id="escolhas" class="escolhas-none"></div>
+                    <input type="image" src="./midias/check.png" alt="checked">
+                    <input data-click-color type="image" src="./midias/color-palette.png" alt="cor">
+                    <input type="image" src="./midias/bin.png" alt="lixeira">
+                </div>
+                <div class="section__box-paragrafo">
+                    <p>Ir ao supermercado e comprar carne.</p>
+                </div>
+                <div class="section__box-datas">
+                    <p>Data criação</p>
+                    <p>Data limite</p>
+                </div>
+            </article>
+
         </section>
     </main>
     <footer>
         <p>Todos os direitos reservados</p>
     </footer>
     <script src="./js/modoDark.js"></script>
+    <script src="./js/app.js"></script>
 </body>
 </html>
