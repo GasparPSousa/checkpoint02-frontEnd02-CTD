@@ -68,6 +68,7 @@ main section {
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
   width: 95vw;
+  min-height: 75vh;
   border: 1px solid black;
 }
 
