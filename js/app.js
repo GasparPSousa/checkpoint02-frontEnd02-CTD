@@ -32,14 +32,19 @@ iconsChecked.forEach(el => el.addEventListener('click', (e) => {
     paragrafo.classList.toggle('tachado');
 }))
 
-var cores = ["#003366", "#336699", "#006666", "#66FF99", "#CCFFFF", "#CCCCFF"];
 
 function aplicarBackground(el, article) {
-    return function () {
-        article.style.backgroundColor = el.value;
-    }
+    let paletaCores = article.children[1];
+    let input = article.children[0].children[1];
+   
+        return function () {
+            article.style.backgroundColor = el.value;
+            paletaCores.removeChild(paletaCores.firstChild);
+            input.disabled = false;
+        }
 }
 
+var cores = ["#003366", "#336699", "#006666", "#66FF99", "#CCFFFF", "#CCCCFF"];
 function criarPaleta(artigo) {
     let divPaleta = document.createElement('div');
     divPaleta.setAttribute('class', 'child-paleta');
@@ -61,31 +66,10 @@ iconsColor.forEach(el => el.addEventListener('mouseover', (e) => {
     let divInput = el.parentElement;
     let article = divInput.parentElement;
     let paletaCores = article.children[1];
-    paletaCores.appendChild(criarPaleta(article))
-    // paletaCores.classList.remove('escolhas-none');
-    // paletaCores.classList.add('escolhas-flex');
-    
+    paletaCores.appendChild(criarPaleta(article));
+    paletaCores.classList.remove('escolhas-none');
+    el.disabled = true;
 }))
-
-let caixasPaletas = document.querySelectorAll('.btn-cor');
-caixasPaletas.forEach(el => el.addEventListener('click', (e) => {
-    e.preventDefault();
-    let divInput = el.parentElement;
-    let article = divInput.parentElement;
-    let paletaCores = article.children[1];
-    paletaCores.removeChild(paletaCores.firstChild)
-    paletaCores.classList.remove('escolhas-flex');
-    paletaCores.classList.add('escolhas-none');
-}))
-
-
-// caixasPaletas.forEach(el => el.addEventListener('mouseout', (e) => {
-//     e.preventDefault();
-//     console.log(el);
-//     el.classList.remove('escolhas-none');
-//     el.classList.add('escolhas-flex');
-// }))
-
 
 let iconsLixeira = document.querySelectorAll('[data-click-lixeira]');
 iconsLixeira.forEach(el => el.addEventListener('click', (e) => {
@@ -122,13 +106,12 @@ function idGenerator() {//função para gerar ids
 
 function criarTarefa(dataCriacao, dataLimite, descricao, id) {
     const artigo = document.createElement('article');
-    artigo.setAttribute('id', 'visualizar');
     artigo.innerHTML =
         `
     <div class="section__box-icons">
-    <input data-click-checked id="${id}" type="image" src="./midias/check.png" alt="checked">
-    <input data-click-color id="${id}" type="image" src="./midias/color-palette.png" alt="cor">
-    <input data-click-lixeira id="${id}" type="image" src="./midias/bin.png" alt="lixeira">
+        <input data-click-checked id="${id}" type="image" src="./midias/check.png" alt="checked">
+        <input data-click-color id="${id}" type="image" src="./midias/color-palette.png" alt="cor">
+        <input data-click-lixeira id="${id}" type="image" src="./midias/bin.png" alt="lixeira">
     </div>
     <div class="escolhas-flex paleta"></div>
     <div class="section__box-paragrafo">

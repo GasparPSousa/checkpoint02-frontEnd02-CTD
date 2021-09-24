@@ -60,29 +60,31 @@ main section {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
   width: 95vw;
-  height: 75vh;
   border: 1px solid black;
 }
 
 main section article {
-  position: relative;
-  border: 1px solid black;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  border: 1px dotted black;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 0.5fr 1fr 0.5fr;
+      grid-template-rows: 0.5fr 1fr 0.5fr;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  grid-area: "icons" "descricao" "datas";
   border-radius: 7px;
   margin: 10px;
   padding: 5px;
-  width: 180px;
-  height: 170px;
+  width: 195px;
+  height: 180px;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
@@ -90,6 +92,17 @@ main section article {
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
+}
+
+main section article p {
+  color: #000;
+}
+
+main section article:hover {
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
+  -webkit-transition: 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 main section article .tachado {
@@ -100,7 +113,6 @@ main section article input {
   width: 32px;
   height: 32px;
   padding: 5px;
-  border: 1px solid black;
 }
 
 .escolhas-none {
@@ -108,9 +120,7 @@ main section article input {
 }
 
 .escolhas-flex {
-  position: absolute;
-  top: 35px;
-  left: 0;
+  position: relative;
   width: 180px;
   height: 30px;
   display: -webkit-box;
@@ -135,12 +145,6 @@ main section article input {
   border: 1px solid black;
 }
 
-.child-paleta {
-  -ms-flex-item-align: e;
-      -ms-grid-row-align: e;
-      align-self: e;
-}
-
 .section__box-icons {
   grid-area: "icons";
   display: -webkit-box;
@@ -157,6 +161,11 @@ main section article input {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
+}
+
+.section__box-paragrafo p {
+  -webkit-transform: translateY(-40px);
+          transform: translateY(-40px);
 }
 
 .section__box-datas {
@@ -281,6 +290,7 @@ form button:hover {
 footer {
   padding: 15px;
   text-align: center;
+  bottom: 0;
 }
 
 @-webkit-keyframes deslizar-1 {
